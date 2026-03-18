@@ -12,6 +12,7 @@ try {
     $mysql_connected = "<p class='success'>Connection to database engine succeeded!</p>";
 } catch (PDOException $e) {
     $mysql_connected = "<p class='error'>Connection to database failed</p>";
+    $error += 1;
 }
 
 // dropping the database @first run
@@ -20,6 +21,7 @@ try {
     $pdo->exec($sqlcommand);
 } catch (PDOException $e) {
     $db_created = "<p class='error'>Database deletion failed!</p>";
+    $error += 1;
 }
 
 // create the database
@@ -29,6 +31,7 @@ try {
     $db_created = "<p class='success'>Database <strong>{$db['db_name']}</strong> created successfully!</p>";
 } catch (PDOException $e) {
     $db_created = "<p class='error'>Database creation failed!</p>";
+    $error += 1;
 }
 
 // select the datase
@@ -38,6 +41,7 @@ try {
     $db_selected = "<p class='success'>Database <strong>{$db['db_name']}</strong> is now selected!</p>";
 } catch (PDOException $e) {
     $db_selected = "<p class='error'>Can't select the database <strong>{$db['db_name']}</strong>!</p>";
+    $error += 1;
 }
 
 // create the tables
@@ -100,6 +104,7 @@ foreach ($tables as $tablename => $sqlcommand) {
         $table_arr[] = "<p class='success'>Successfully created the {$tablename} table.</p>";
     } catch (PDOException $e) {
         $table_arr[] = "<p class='error'>Error creating the {$tablename} table.</p>";
+        $error += 1;
     }
 }
 
@@ -147,10 +152,26 @@ try {
 } catch (PDOException $e) {
     $pdo->rollBack();
     $admin_created = "<p class='error'>Admin account creation failed!.</p>";
+    $error += 1;
+}
+
+// populate the sites table
+$sites = ['CEBU 1 - AVENIR', 'CEBU 2 - 1NITO', 'MANILA 1 - UB', 'MANILA 2 - OCC'];
+try {
+    $sqlcommand = "INSERT INTO site_location(`site_name`) VALUES(:site_name);";
+    $statement = $pdo->prepare($sqlcommand);
+
+    foreach ($sites as $sitename) {
+        $statement->execute([$sitename]);
+    }
+    $site_created = "<p class='success'>Sites location initialization success!</p>";
+} catch (PDOException $e) {
+    $site_created = "<p class='error'>Sites location initiation failed!</p>";
+    $error += 1;
 }
 
 
-// add more sample users
+// add sample interns users
 $sample_intern = require __DIR__ . '/../includes/sample_interns.php';
 
 try {
@@ -195,6 +216,7 @@ try {
         $pdo->rollBack();
     }
     $intern_created = "<p class='error'>Intern account creation failed!.</p>" . $e->getMessage();
+    $error += 1;
 }
 
 $sqlcommand = "SELECT COUNT(users_id) AS total_no_of_records FROM users";
