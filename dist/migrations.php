@@ -1,5 +1,5 @@
 <?php
-include 'migrate_controller.php';
+include 'includes/migrate_controller.php';
 
 ?>
 <!DOCTYPE html>

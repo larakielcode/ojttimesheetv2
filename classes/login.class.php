@@ -12,19 +12,19 @@ class Login
     {
         // check empty inputs
         if ($this->isInputEmpty()) {
-            $this->redirectPage("?error=", "emptyinput");
+            $this->redirectPage("error", "emptyinput");
         }
 
         // check for valid email
         if ($this->isNotValidEmail()) {
-            $this->redirectPage("?error=", "invalidemail");
+            $this->redirectPage("error", "invalidemail");
         }
 
         // validate users in the db
         $hash_password = $this->getHashedPassword();
 
         // compare both passwords and if match redirect to dashboard
-        $this->checkPassword($hash_password) ? $this->redirectPage('', '') : ($this->redirectPage('?error=', 'errorlogin') ?: exit());
+        $this->checkPassword($hash_password) ? $this->redirectPage('', '') : ($this->redirectPage('error', 'errorlogin') ?: exit());
     }
 
     private function isInputEmpty(): bool
@@ -39,7 +39,7 @@ class Login
 
     private function redirectPage(string $uri, string $error): void
     {
-        header("Location: ../dist/index.php{$uri}{$error}");
+        header("Location: /index.php?" . urlencode($uri) . "=" . urlencode($error));
         exit();
     }
 
@@ -51,7 +51,7 @@ class Login
             $statement->execute([$this->email]);
             return $statement->fetchColumn();
         } catch (PDOException $e) {
-            $this->redirectPage("?error=", "usernotfound");
+            $this->redirectPage("error=", "usernotfound");
             exit();
         }
     }
