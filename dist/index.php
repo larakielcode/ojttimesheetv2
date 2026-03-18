@@ -1,9 +1,8 @@
 <?php
-
+session_start();
 include __DIR__ . '/../includes/general.inc.php';
 
 $test = loginErrors();
-
 
 if (!isset($_SESSION['logged_user'])) {
     include __DIR__ . '/views/login.view.php';
