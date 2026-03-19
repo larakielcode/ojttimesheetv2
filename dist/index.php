@@ -1,15 +1,18 @@
 <?php
-session_start();
-include 'includes/general.inc.php';
 
-$test = loginErrors();
+const BASE_PATH = __DIR__ . '/../';
 
-if (!isset($_SESSION['logged_user'])) {
-    include 'views/login.view.php';
+require BASE_PATH . 'functions.php';
+
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+$routes = [
+    '/' => base_path('controllers/index.controller.php'),
+    '/test' => base_path('controllers/test.php'),
+];
+
+if (array_key_exists($uri, $routes)) {
+    require $routes[$uri];
 } else {
-    include 'views/dashboard.view.php';
+    echo "bleh";
 }
-
-//use this template to instantiate the user
-//$test = new User('aldin', 's', 'moreno', 'usjr', 100, 2, '', '', '', '', 'test@omegahms.com', 'hahapassword', 'admin');
-//$test->getUser();
