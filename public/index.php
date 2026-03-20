@@ -4,15 +4,10 @@ const BASE_PATH = __DIR__ . '/../';
 
 require BASE_PATH . 'includes/functions.php';
 
+spl_autoload_register(function ($class) {
+    dd($class);
+});
 
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+require base_path('includes/router.php');
 
-$routes = [
-    '/' => base_path('controllers/index.controller.php'),
-    '/test' => base_path('controllers/test.php'),
-    '/migration' => base_path('migrations/migrations.php'),
-];
-
-require base_path('classes/Router.class.php');
-
-Router::route($uri, $routes);
+routeToController($uri, $routes);
