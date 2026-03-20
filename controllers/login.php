@@ -1,6 +1,6 @@
 <?php
-include '../../classes/login.class.php';
-$connection = require __DIR__ . '/connection.php';
+
+//$connection = require __DIR__ . '/connection.php';
 
 // get the post data
 $email = trim($_POST['email']);
