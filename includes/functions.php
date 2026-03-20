@@ -1,6 +1,8 @@
 <?php
 
-function dd($value)
+declare(strict_types=1);
+
+function dd(string $value): void
 {
 
     echo '<pre>';
@@ -9,18 +11,18 @@ function dd($value)
     die();
 }
 
-function base_path($path)
+function base_path(string $path): string
 {
     return BASE_PATH . $path;
 }
 
 // function to require controllers
-function controller($path)
+function controller(string $path): string
 {
     return base_path('controllers/' . $path);
 }
 
-function view($path)
+function view(string $path): string
 {
     return base_path('views/' . $path);
 }

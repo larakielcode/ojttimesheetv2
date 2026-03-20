@@ -23,7 +23,7 @@
 
         <div class="login-box">
             <h2>Log In</h2>
-            <form method="post" action="../controllers/login.php">
+            <form method="post" action="/login">
 
                 <div class="form-group">
                     <div class="form-row">
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="form-actions">
-                    <input type="submit" value="Log in">
+                    <input name="submit" type="submit" value="Log in">
                 </div>
 
             </form>

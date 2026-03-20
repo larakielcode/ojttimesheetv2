@@ -1,17 +1,18 @@
 <?php
 
-//$connection = require __DIR__ . '/connection.php';
+declare(strict_types=1);
+
+// check if form was submitted
+if (!isset($_POST["submit"])) {
+    header("location: /");
+    die();
+}
+
+
 
 // get the post data
-$email = trim($_POST['email']);
+/* $email = trim($_POST['email']);
 $password = trim($_POST['password']);
 
-/* // input validation and error checking
-if (empty($email) || empty($password)) {
-    header("Location: ../dist/index.php?error=emptyinput");
-    exit();
-}
- */
-
 $userlogin = new Login($email, $password, $connection);
-$userlogin->loginUser();
+$userlogin->loginUser(); */

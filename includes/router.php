@@ -1,15 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $routes = [
     '/' => controller('index.php'),
     '/test' => controller('test.php'),
+    '/login' => controller('login.php'),
     // no need to change below migration line as this should only be run once during deployment
     '/migration' => base_path('migrations/migrations.php'),
 ];
 
-function routeToController($uri, $routes)
+function routeToController(string $uri, array $routes): void
 {
     if (array_key_exists($uri, $routes)) {
         require $routes[$uri];
@@ -18,7 +21,7 @@ function routeToController($uri, $routes)
     }
 }
 
-function abort($code)
+function abort(int $code): void
 {
     http_response_code($code);
     // should require a 404(code) page but for now lets echo a response
