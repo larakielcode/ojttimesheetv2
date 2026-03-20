@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OMH Cebu IT Timetracker | OJT</title>
-    <link rel="stylesheet" href="../public/assets/css/login_page.css">
+    <link rel="stylesheet" href="../assets/css/login_page.css">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
 
         <div class="left-section">
             <div class="logo">
-                <img src="../public/assets/images/omegalogo.png" alt="Omega Healthcare">
+                <img src="../assets/images/omegalogo.png" alt="Omega Healthcare">
             </div>
             <div class="app-title">
                 OMH Cebu IT Timetracker<br>
