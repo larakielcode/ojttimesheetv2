@@ -3,7 +3,7 @@
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $routes = [
-    '/' => controller('index.controller.php'),
+    '/' => controller('index.php'),
     '/test' => controller('test.php'),
     // no need to change below migration line as this should only be run once during deployment
     '/migration' => base_path('migrations/migrations.php'),
