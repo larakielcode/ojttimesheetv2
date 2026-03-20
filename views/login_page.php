@@ -1,3 +1,6 @@
+<?php
+Session::start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OMH Cebu IT Timetracker | OJT</title>
-    <link rel="stylesheet" href="../public/assets/css/login_page.css">
+    <link rel="stylesheet" href="../assets/css/login_page.css">
 </head>
 
 <body>
@@ -13,7 +16,7 @@
 
         <div class="left-section">
             <div class="logo">
-                <img src="../public/assets/images/omegalogo.png" alt="Omega Healthcare">
+                <img src="../assets/images/omegalogo.png" alt="Omega Healthcare">
             </div>
             <div class="app-title">
                 OMH Cebu IT Timetracker<br>
@@ -23,7 +26,7 @@
 
         <div class="login-box">
             <h2>Log In</h2>
-            <form method="post" action="">
+            <form method="post" action="/login">
 
                 <div class="form-group">
                     <div class="form-row">
@@ -40,7 +43,7 @@
                 </div>
 
                 <div class="form-actions">
-                    <input type="submit" value="Log in">
+                    <input name="submit" type="submit" value="Log in">
                 </div>
 
             </form>
