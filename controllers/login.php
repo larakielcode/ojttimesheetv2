@@ -9,10 +9,9 @@ if (!isset($_POST["submit"])) {
 }
 
 
-
 // get the post data
-/* $email = trim($_POST['email']);
+$email = trim($_POST['email']);
 $password = trim($_POST['password']);
 
 $userlogin = new Login($email, $password, $connection);
-$userlogin->loginUser(); */
+$userlogin->loginUser();
