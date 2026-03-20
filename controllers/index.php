@@ -1,3 +1,5 @@
 <?php
 
-require view('login_page.php');
+if (session_status()) {
+    echo "session is ok";
+}

@@ -38,16 +38,31 @@ final class Session
         return isset($_SESSION[$key]);
     }
 
-    public station function destroy(): void
+    public static function regenerate(): void
     {
+        self::start();
+        session_regenerate_id(true);
+    }
+
+    public static function destroy(): void
+    {
+        self::start();
         if (session_status() !== PHP_SESSION_NONE) {
             $_SESSION = [];
-            if (ini_set('session.use_cookies')) {
+            if (ini_get('session.use_cookies')) {
                 $params = session_get_cookie_params();
-                setcookie(session_name(), '', time() - 42000, 
-                $params['path'],$params['domain'],$params['secure'], $params['httponly']);
+                setcookie(
+                    session_name(),
+                    '',
+                    time() - 42000,
+                    $params['path'],
+                    $params['domain'],
+                    $params['secure'],
+                    $params['httponly']
+                );
             }
         }
+        session_unset();
         session_destroy();
     }
 }

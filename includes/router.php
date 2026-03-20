@@ -7,6 +7,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $routes = [
     '/' => controller('index.php'),
     '/login' => controller('login.php'),
+    '/dashboard' => controller('dashboard.php'),
     // no need to change below migration line as this should only be run once during deployment
     '/migration' => base_path('migrations/migrations.php'),
 ];
