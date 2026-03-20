@@ -48,7 +48,7 @@ final class Session
     {
         self::start();
         if (session_status() !== PHP_SESSION_NONE) {
-            $_SESSION = [];
+            session_unset();
             if (ini_get('session.use_cookies')) {
                 $params = session_get_cookie_params();
                 setcookie(
@@ -62,7 +62,6 @@ final class Session
                 );
             }
         }
-        session_unset();
         session_destroy();
     }
 }

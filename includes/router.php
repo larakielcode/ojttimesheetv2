@@ -5,11 +5,11 @@ declare(strict_types=1);
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $routes = [
-    '/' => controller('index.php'),
-    '/login' => controller('login.php'),
-    '/dashboard' => controller('dashboard.php'),
+    '/' => controller('index'),
+    '/login' => view('login_page'),
+    '/dashboard' => controller('dashboard'),
     // no need to change below migration line as this should only be run once during deployment
-    '/migration' => base_path('migrations/migrations.php'),
+    '/migration' => base_path('migrations/migrations'),
 ];
 
 function routeToController(string $uri, array $routes): void

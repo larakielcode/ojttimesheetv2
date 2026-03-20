@@ -1,3 +1,6 @@
 <?php
+Session::start();
 
-echo "Dashboard hey!!";
+echo "yay";
+echo $_SESSION['is_logged_user'];
+echo $_SESSION['username'];
