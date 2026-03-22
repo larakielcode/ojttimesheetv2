@@ -39,6 +39,13 @@ final class Database
         return self::$instance;
     }
 
+    public static function query(string $query, $params = [])
+    {
+        $statement = self::$instance->prepare($query);
+        $statement->execute($params);
+        return $statement;
+    }
+
     // Prevent cloning of instance
     private function __clone()
     {
