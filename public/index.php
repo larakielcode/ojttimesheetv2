@@ -1,5 +1,16 @@
 <?php
 
-require __DIR__.'/../bootstrap/app.php';
+use App\Core\Router;
 
-dd($_SERVER);
+require __DIR__ . '/../bootstrap/app.php';
+
+// declare a router object
+$router = new Router();
+
+// require the routes file
+require basePath('routes/routes.php');
+
+// get the route
+$router->route($method, $uri);
+
+echo "entry index";
