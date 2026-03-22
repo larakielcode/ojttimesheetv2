@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Core;
+
 class Validation
 {
-    public static function checkEmpty(array $items): string
+    public static function isEmpty(string $string): bool
     {
-        foreach ($items as $item) {
-
-        }
+        return (empty($string));
     }
 }

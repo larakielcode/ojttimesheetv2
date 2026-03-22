@@ -10,6 +10,9 @@ const BASE_PATH = __DIR__ . '/../';
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
+// Instantiate the DB and return the object
+
+
 // All functions should be down below
 function basePath(string $path): string
 {
