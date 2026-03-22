@@ -16,10 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         $errors['login'] = "Email and password are required.";
     }
 
-    // passed validation, lets check the user match to db and login the user
-    $statement = $connection->prepare("SELECT password FROM users_login WHERE email = :email");
-    $statement->execute([':email' => $email]);
-    $user = $statement->fetch();
+    // if all validation pass then call the login class - to be refactor
+
+    $user = Database::query("SELECT password FROM users_login WHERE email = :email", [$email])->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
         dd("User found log the user in");
