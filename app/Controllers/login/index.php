@@ -1,3 +1,3 @@
 <?php
 
-dd('You reached it here index controller');
+require views('login_page.php');

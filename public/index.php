@@ -12,5 +12,3 @@ require basePath('routes/routes.php');
 
 // get the route
 $router->route($method, $uri);
-
-echo "entry index";

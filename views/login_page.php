@@ -1,6 +1,3 @@
-<?php
-Session::start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,44 +9,44 @@ Session::start();
 </head>
 
 <body>
-    <div class="container">
+<div class="container">
 
-        <div class="left-section">
-            <div class="logo">
-                <img src="../assets/images/omegalogo.png" alt="Omega Healthcare">
-            </div>
-            <div class="app-title">
-                OMH Cebu IT Timetracker<br>
-                OJT
-            </div>
+    <div class="left-section">
+        <div class="logo">
+            <img src="../assets/images/omegalogo.png" alt="Omega Healthcare">
         </div>
-
-        <div class="login-box">
-            <h2>Log In</h2>
-            <form method="post" action="/login">
-
-                <div class="form-group">
-                    <div class="form-row">
-                        <label for="email">Email:</label>
-                        <input type="text" id="email" name="email" placeholder="Enter email" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-row">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" placeholder="Enter password" required>
-                    </div>
-                </div>
-
-                <div class="form-actions">
-                    <input name="submit" type="submit" value="Log in">
-                </div>
-
-            </form>
+        <div class="app-title">
+            OMH Cebu IT Timetracker<br>
+            OJT
         </div>
-
     </div>
+
+    <div class="login-box">
+        <h2>Log In</h2>
+        <form method="post" action="/">
+
+            <div class="form-group">
+                <div class="form-row">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" placeholder="Enter email" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input name="submit" type="submit" value="Log in">
+            </div>
+
+        </form>
+    </div>
+
+</div>
 </body>
 
 </html>
