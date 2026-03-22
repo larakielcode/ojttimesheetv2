@@ -22,10 +22,15 @@ class Router
         $this->add('GET', $uri, $controller);
     }
 
+    public function post(string $uri, mixed $controller): void
+    {
+        $this->add('POST', $uri, $controller);
+    }
+
     public function route(string $method, string $uri): mixed
     {
         foreach ($this->routes as $route) {
-            if ($route['uri'] === $uri && $route['method'] === $method) {
+            if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
                 return require basePath($route['controller']);
             }
         }
