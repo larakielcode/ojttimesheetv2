@@ -56,4 +56,9 @@ The **OJT Timesheet System** (often referred to as **OJT Timetracker**) is a spe
 ├── storage/               # Logs and file uploads (new)
 </pre>
 
-
+**Note on every controllers
+*** Index.php - should always be the landing/view page
+*** Show.php - view controller for the resources
+*** Create.php - add item/record on the db
+*** Destroy.php - delete item/record on the db
+*** Edit.php - update item/record on the db
