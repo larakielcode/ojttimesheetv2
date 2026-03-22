@@ -3,7 +3,7 @@
 return [
     'database' => [
         'db_host' => 'db',
-        'db_name' => 'timetrackerdbv2',
+        'db_name' => 'dev_db',
         'db_user' => 'root',
         'db_pass' => 'test1234',
         'charset' => 'utf8mb4',

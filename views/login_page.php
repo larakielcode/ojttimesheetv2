@@ -16,8 +16,7 @@
             <img src="../assets/images/omegalogo.png" alt="Omega Healthcare">
         </div>
         <div class="app-title">
-            OMH Cebu IT Timetracker<br>
-            OJT
+            <span class="subtitle2nd">IT Intern Timetracker</span>
         </div>
     </div>
 

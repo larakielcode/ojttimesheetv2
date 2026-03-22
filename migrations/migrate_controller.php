@@ -1,10 +1,10 @@
 <?php
 
-$config = require __DIR__ . '/../includes/config.php';
+$config = require __DIR__ . '/../config/config.php';
 
 $db = $config['database'];
 
-$errors  = 0; # if the value of this doesnt change means all operations succeeded
+$errors = 0; # if the value of this doesnt change means all operations succeeded
 
 // connecting to the db engine
 try {
