@@ -27,7 +27,8 @@
             <div class="form-group">
                 <div class="form-row">
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" placeholder="Enter email" required>
+                    <input type="text" id="email" name="email" placeholder="Enter email"
+                           value="<?= $_POST['email'] ?? '' ?>" required>
                 </div>
             </div>
 
