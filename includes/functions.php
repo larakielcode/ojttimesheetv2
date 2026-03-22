@@ -16,10 +16,10 @@ function base_path(string $path): string
     return BASE_PATH . $path;
 }
 
-// function to require controllers
+// function to require Controllers
 function controller(string $path): string
 {
-    return base_path('controllers/' . $path . '.php');
+    return base_path('Controllers/' . $path . '.php');
 }
 
 function view(string $path): string
