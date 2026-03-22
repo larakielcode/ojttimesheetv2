@@ -27,7 +27,8 @@
             <div class="form-group">
                 <div class="form-row">
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" placeholder="Enter email" required>
+                    <input type="text" id="email" name="email" placeholder="Enter email"
+                           value="<?= $_POST['email'] ?? '' ?>" required>
                 </div>
             </div>
 
@@ -36,6 +37,12 @@
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" placeholder="Enter password" required>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <?php if (isset($errors['login'])) : ?>
+                    <p><span class="notif-errors"><?= $errors['login'] ?></span></p>
+                <?php endif; ?>
             </div>
 
             <div class="form-actions">
