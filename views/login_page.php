@@ -38,6 +38,12 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <?php if (isset($errors['login'])) : ?>
+                    <p><span class="notif-errors"><?= $errors['login'] ?></span></p>
+                <?php endif; ?>
+            </div>
+
             <div class="form-actions">
                 <input name="submit" type="submit" value="Log in">
             </div>
