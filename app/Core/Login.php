@@ -3,22 +3,20 @@ declare(strict_types=1);
 
 namespace App\Core;
 
-use JetBrains\PhpStorm\NoReturn;
 
 class Login
 {
     public function __construct(
-        private int    $users_id,
+        private int $users_id,
         private string $email,
         private string $role
-    )
-    {
+    ) {
         $this->setLogin();
     }
 
     public function setLogin(): void
     {
-        
+
         session_regenerate_id(true);
 
         $_SESSION['logged_on_user'] = [
