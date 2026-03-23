@@ -39,7 +39,7 @@ final class Database
         return self::$instance;
     }
 
-    public static function query(string $query, $params = [])
+    public static function query(string $query, array $params = []): \PDOStatement
     {
         if (self::$instance === null) {
             throw new RuntimeException('Database must be initialized.');
