@@ -12,7 +12,7 @@ The **OJT Timesheet System** (often referred to as **OJT Timetracker**) is a spe
 ## 🛠️ Core Functional Modules
 
 * **🔐 User Authentication**
-  ![Progress](https://img.shields.io/badge/Progress-0%25-red)
+  ![Progress](https://img.shields.io/badge/Progress-30%25-red)
   *Secure login for Interns and Supervisors/Admins.*
 * **⚙️ Time Logging Engine**
   ![Progress](https://img.shields.io/badge/Progress-0%25-red)
