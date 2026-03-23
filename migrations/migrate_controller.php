@@ -1,9 +1,10 @@
 <?php
-$config = require 'config.php';
+
+$config = require __DIR__ . '/../config/config.php';
 
 $db = $config['database'];
 
-$errors  = 0; # if the value of this doesnt change means all operations succeeded
+$errors = 0; # if the value of this doesnt change means all operations succeeded
 
 // connecting to the db engine
 try {
@@ -68,6 +69,7 @@ $tables = [
             email VARCHAR(150) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
             role ENUM('admin','intern') NOT NULL,
+            last_login DATETIME DEFAULT NULL,
             CONSTRAINT fk_user_login
                 FOREIGN KEY (users_id)
                 REFERENCES users(users_id)

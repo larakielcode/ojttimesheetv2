@@ -1,18 +1,14 @@
 <?php
 
-const BASE_PATH = __DIR__ . '/../';
+use App\Core\Router;
 
-require BASE_PATH . 'functions.php';
+require __DIR__ . '/../bootstrap/app.php';
 
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+// declare a router object
+$router = new Router();
 
-$routes = [
-    '/' => base_path('controllers/index.controller.php'),
-    '/test' => base_path('controllers/test.php'),
-];
+// require the routes file
+require basePath('routes/routes.php');
 
-if (array_key_exists($uri, $routes)) {
-    require $routes[$uri];
-} else {
-    echo "bleh";
-}
+// get the route
+$router->route($method, $uri);

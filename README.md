@@ -12,7 +12,7 @@ The **OJT Timesheet System** (often referred to as **OJT Timetracker**) is a spe
 ## 🛠️ Core Functional Modules
 
 * **🔐 User Authentication**
-  ![Progress](https://img.shields.io/badge/Progress-0%25-red)
+  ![Progress](https://img.shields.io/badge/Progress-80%25-yellow)
   *Secure login for Interns and Supervisors/Admins.*
 * **⚙️ Time Logging Engine**
   ![Progress](https://img.shields.io/badge/Progress-0%25-red)
@@ -37,39 +37,28 @@ The **OJT Timesheet System** (often referred to as **OJT Timetracker**) is a spe
 
 ## 📁 Directory and File Structures
 <pre>
-./
-|   📄 README.md
-|
-+---📁 classes
-|       🐘 database.class.php
-|
-+---📁 dist
-|   |   🐘 index.php
-|   |   🐘 migrations.php
-|   |
-|   +---📁 assets
-|   |       🖼️ omegalogo.png
-|   |
-|   +---📁 css
-|   |      🎨 style.css
-|   |
-|   +---📄 js
-|   |       main.js
-|   |
-|   +---📁 views
-|           🌐 index.html
-|
-\---📁 includes
-        ⚙️ config.php
-        🐘 connection.php
-        🐘 migrate_controller.php
-        🐘 sample_interns.php
+├── app/
+│   ├── Controllers/       
+│   ├── Models/            # Database interactions (new)
+│   ├── Middleware/        # Auth checks, CSRF, etc. (new)
+│   └── Core/              # Router, Database class, Container
+├── bootstrap/
+│   └── app.php            # Initializes the app (replaces some includes)
+├── config/                # Database credentials and app settings (new)
+├── public/
+│   ├── assets/            # CSS, JS, Images
+│   ├── index.php          # Entry point
+│   └── .htaccess
+├── resources/
+│   └── views/             # All .view.php files
+├── routes/
+│   └── web.php            # Clean route definitions
+├── storage/               # Logs and file uploads (new)
 </pre>
-* 📂 **classes/** - Source files for all the PHP classes
-* 📂 **dist/** - The document root. The index file is located here
-* 📂 **dist/assets** - All icons and images will be stored here
-* 📂 **dist/css** - All CSS files
-* 📂 **dist/js** - All Javascript files
-* 📂 **dist/views** - All pages that renders display/views
-* 📂 **includes/** - Other important PHP include files dependencies
-* 📄 **README.md** - Project Overview
+
+**Note on every controllers
+*** Index.php - should always be the landing/view page
+*** Show.php - view controller for the resources
+*** Create.php - add item/record on the db
+*** Destroy.php - delete item/record on the db
+*** Edit.php - update item/record on the db

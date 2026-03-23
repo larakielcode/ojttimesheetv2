@@ -1,0 +1,133 @@
+:root {
+    --primary: #2459a3;
+    --primary-soft: rgba(36, 89, 163, 0.08);
+    --text-main: #1e293b;
+    --text-light: #64748b;
+    --bg-page: #f8fafc; /* Very light gray-blue */
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background-color: var(--bg-page);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+.login-card {
+    background: var(--white);
+    padding: 48px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03), 0 5px 15px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    width: 180px;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: var(--text-light);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-top: 15px;
+}
+
+.accent-text {
+    color: var(--primary);
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+/* Form */
+.input-wrapper {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1.5px solid #e2e8f0;
+    background: #fdfdfd;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--white);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+input::placeholder {
+    color: #cbd5e1;
+}
+
+/* Button */
+.login-btn {
+    width: 100%;
+    background-color: var(--primary);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.2s ease;
+    margin-top: 8px;
+}
+
+.login-btn:hover {
+    background-color: #1a437a; /* Darker shade of your blue */
+    box-shadow: 0 4px 12px rgba(36, 89, 163, 0.2);
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 11px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
