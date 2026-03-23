@@ -1,11 +1,9 @@
 <?php
 declare(strict_types=1);
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
 use App\Core\Database;
 use App\Core\Router;
+use App\Core\Session;
 
 // declare the needed constants
 const BASE_PATH = __DIR__ . '/../';
@@ -34,9 +32,15 @@ function dd(mixed $value): void
     exit();
 }
 
-// SPL Autoloader here
 spl_autoload_register(function ($className) {
-    $className = str_replace('\\', DIRECTORY_SEPARATOR, $className);
-    require basePath("{$className}.php");
+    // Convert App\Core\Database to App/Core/Database
+    $path = str_replace('\\', DIRECTORY_SEPARATOR, $className);
+
+    $file = basePath("{$path}.php");
+
+    if (file_exists($file)) {
+        require $file;
+    }
 });
 
+Session::start();
