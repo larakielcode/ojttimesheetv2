@@ -10,12 +10,12 @@ $config = require basePath('config/config.php');
 // set the default timezone
 $test = date_default_timezone_set($config['app_details']['app_tzone']);
 
-$connection = Database::getConnection($config);
+Database::getConnection($config);
 
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    $email = trim($_POST['email']) ?? '';
+    $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
     if (Validation::isEmpty($email) || Validation::isEmpty($password)) {
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $user = Database::query("SELECT users_id, password FROM users_login WHERE email = :email", ['email' => $email])->fetch();
 
             if ($user && password_verify($password, $user['password'])) {
-                $loggedUser = new Login($user['users_id'], $email, $connection);
+                $loggedUser = new Login($user['users_id'], $email);
                 Redirect::toDashboard();
             } else {
                 $errors['login'] = "Enter a valid username or password.";

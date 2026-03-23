@@ -10,7 +10,7 @@ class Login
     public function __construct(
         private int    $users_id,
         private string $email,
-        private \PDO   $connection
+        //private \PDO   $connection
     )
     {
         $this->setLogin();
