@@ -12,4 +12,4 @@ $router->get('/dashboard', 'app/Controllers/dashboard/index.php')->only('auth');
 
 
 // this is for migrations
-//$router->get('/migrations', 'migrations/migrations.php');
+$router->get('/migrations', 'migrations/migrations.php');
