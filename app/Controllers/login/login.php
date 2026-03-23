@@ -1,29 +1,43 @@
 <?php
 
 use App\Core\Database;
+use App\Core\Login;
+use App\Core\Redirect;
 use App\Core\Validation;
 
 $config = require basePath('config/config.php');
+
+// set the default timezone
+$test = date_default_timezone_set($config['app_details']['app_tzone']);
+
 $connection = Database::getConnection($config);
 
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = trim($_POST['email']) ?? '';
+    $password = $_POST['password'] ?? '';
 
     if (Validation::isEmpty($email) || Validation::isEmpty($password)) {
         $errors['login'] = "Email and password are required.";
     }
 
-    // if all validation pass then call the login class - to be refactor
+    if (empty($errors)) {
 
-    $user = Database::query("SELECT password FROM users_login WHERE email = :email", [$email])->fetch();
+        try {
 
-    if ($user && password_verify($password, $user['password'])) {
-        dd("User found log the user in");
-    } else {
-        $errors['login'] = "Enter a valid username or password.";
+            $user = Database::query("SELECT users_id, password FROM users_login WHERE email = :email", ['email' => $email])->fetch();
+
+            if ($user && password_verify($password, $user['password'])) {
+                $loggedUser = new Login($user['users_id'], $email, $connection);
+                Redirect::toDashboard();
+            } else {
+                $errors['login'] = "Enter a valid username or password.";
+            }
+        } catch (\PDOException $e) {
+
+            $errors['login'] = "A database error occurred.";
+        }
     }
 }
 
