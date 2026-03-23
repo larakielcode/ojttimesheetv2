@@ -14,7 +14,6 @@ class Login
     )
     {
         $this->setLogin();
-        dd("user is now logged, before redirecting call to update the last login time here");
     }
 
     public function setLogin(): void
