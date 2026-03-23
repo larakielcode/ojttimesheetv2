@@ -20,7 +20,8 @@ final class Database
 
     public static function getConnection(array $config = []): PDO
     {
-        if (self::$instance !== null) return self::$instance;
+        if (self::$instance !== null)
+            return self::$instance;
 
         if (empty($config)) {
             throw new \PDOException("Database config missing on first initialization");
@@ -42,7 +43,7 @@ final class Database
     public static function query(string $query, array $params = []): \PDOStatement
     {
         if (self::$instance === null) {
-            throw new RuntimeException('Database must be initialized.');
+            throw new \RuntimeException('Database must be initialized.');
         }
 
         $statement = self::$instance->prepare($query);

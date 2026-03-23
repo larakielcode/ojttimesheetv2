@@ -24,6 +24,26 @@ final class Session
         }
     }
 
+    public static function authenticate(int $users_id, string $email, string $role): void
+    {
+        self::checkSessionStatus();
+        session_regenerate_id(true);
+
+        self::set('logged_on_user', [
+            'users_id' => $users_id,
+            'email' => $email,
+            'role' => $role,
+            'last_login_time' => time()
+        ]);
+        self::set('is_logged', true);
+    }
+
+    public static function set(string $key, mixed $value): void
+    {
+        self::checkSessionStatus();
+        $_SESSION[$key] = $value;
+    }
+
     public static function destroy(): void
     {
         self::start();
@@ -43,5 +63,12 @@ final class Session
             }
         }
         session_destroy();
+    }
+
+    public static function checkSessionStatus(): void
+    {
+        if (session_status() !== PHP_SESSION_NONE) {
+            self::start();
+        }
     }
 }

@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
             if ($user && password_verify($password, $user['password'])) {
                 $loggedUser = new Login($user['users_id'], $email, $user['role']);
+
                 Redirect::toDashboard();
             } else {
                 $errors['login'] = "Enter a valid username or password.";
