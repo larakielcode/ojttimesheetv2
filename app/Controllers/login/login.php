@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
                 Redirect::toDashboard();
             } else {
-                $errors['login'] = "Enter a valid username or password.";
+                $errors['login'] = "Incorrect email or password.";
             }
         } catch (\PDOException $e) {
 
