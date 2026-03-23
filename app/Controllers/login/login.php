@@ -41,4 +41,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 }
 
-require views('login_page.php');
+require views('login.view.php');
