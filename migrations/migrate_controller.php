@@ -69,6 +69,7 @@ $tables = [
             email VARCHAR(150) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
             role ENUM('admin','intern') NOT NULL,
+            last_login DATETIME DEFAULT NULL,
             CONSTRAINT fk_user_login
                 FOREIGN KEY (users_id)
                 REFERENCES users(users_id)
