@@ -47,9 +47,29 @@ final class Session
         $_SESSION[$key] = $value;
     }
 
+    public static function checkIdle(): void
+    {
+        self::checkSessionStatus();
+
+        // auto logout after 30mins of inactivity
+        $idleLimit = 1800;
+
+        if (isset($_SESSION['last_activity'])) {
+            $secondsInactive = time() - $_SESSION['last_activity'];
+
+            if ($secondsInactive >= $idleLimit) {
+                self::destroy();
+                header("location: /");
+                exit();
+            }
+        }
+
+        $_SESSION['last_activity'] = time();
+    }
+
     public static function destroy(): void
     {
-        self::start();
+        self::checkSessionStatus();
         if (session_status() !== PHP_SESSION_NONE) {
             session_unset();
             if (ini_get('session.use_cookies')) {
