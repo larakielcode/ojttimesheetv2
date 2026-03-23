@@ -6,7 +6,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 use App\Core\Database;
 use App\Core\Router;
-use JetBrains\PhpStorm\NoReturn;
 
 // declare the needed constants
 const BASE_PATH = __DIR__ . '/../';
@@ -27,7 +26,6 @@ function views(string $path): string
     return basePath("views/{$path}");
 }
 
-#[NoReturn]
 function dd(mixed $value): void
 {
     echo "<pre>";
@@ -36,9 +34,9 @@ function dd(mixed $value): void
     exit();
 }
 
-
 // SPL Autoloader here
 spl_autoload_register(function ($className) {
     $className = str_replace('\\', DIRECTORY_SEPARATOR, $className);
     require basePath("{$className}.php");
 });
+
