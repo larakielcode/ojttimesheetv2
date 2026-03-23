@@ -4,6 +4,7 @@ Session::checkIdle(); # this will check if the user is inactive for 30mins
 
 
 echo "Hello! Welcome to the dashboard";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,5 +25,6 @@ echo "Hello! Welcome to the dashboard";
 
     </form>
 </body>
+<?= dd($_SESSION); ?>?>
 
 </html>
