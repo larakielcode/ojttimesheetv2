@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Core;
 
+use app\Core\Middleware\Middleware;
+
 class Router
 {
     protected array $routes = [];
@@ -34,17 +36,9 @@ class Router
     {
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
-                if ($route['middleware'] === 'guest') {
-                    if ($_SESSION['logged_on_user'] ?? false) {
-                        header("location: /dashboard");
-                        exit();
-                    }
-                }
-                if ($route['middleware'] === 'auth') {
-                    if (!$_SESSION['logged_on_user'] ?? false) {
-                        header("location: /login");
-                        exit();
-                    }
+                if ($route['middleware'] ?? false) {
+
+                    Middleware::resolve($route['middleware']);
                 }
                 return require basePath($route['controller']);
             }
