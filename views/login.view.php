@@ -20,6 +20,10 @@
             </div>
         </div>
 
+        <div class="divider">
+
+        </div>
+
         <div class="login-box">
             <h2>Log In</h2>
             <form method="post" action="/">
@@ -27,7 +31,7 @@
                 <div class="form-group">
                     <div class="form-row">
                         <label for="email">Email:</label>
-                        <input type="text" id="email" name="email" placeholder="Enter email"
+                        <input type="email" id="email" name="email" placeholder="Enter email"
                             value="<?= $_POST['email'] ?? '' ?>" required>
                     </div>
                 </div>
@@ -39,16 +43,16 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <?php if (isset($errors['login'])) : ?>
-                        <p><span class="notif-errors"><?= $errors['login'] ?></span></p>
-                    <?php endif; ?>
-                </div>
-
                 <div class="form-actions">
                     <input name="submit" type="submit" value="Log in">
                 </div>
 
+
+                <?php if (isset($errors['login'])): ?>
+                    <p><span class="notif-errors">
+                            <?= $errors['login'] ?>
+                        </span></p>
+                <?php endif; ?>
             </form>
         </div>
 
