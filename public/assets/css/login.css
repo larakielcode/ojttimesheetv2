@@ -280,8 +280,11 @@ input[type="password"]:focus {
 }
 
 .notif-errors {
+  display: block;
+  text-align: center;
   font-size: 13px;
   font-weight: 600;
+  letter-spacing: 0.3px;
   color: red;
 }
 
