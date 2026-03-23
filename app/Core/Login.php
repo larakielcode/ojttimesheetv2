@@ -10,7 +10,7 @@ class Login
     public function __construct(
         private int    $users_id,
         private string $email,
-        //private \PDO   $connection
+        private string $role
     )
     {
         $this->setLogin();
@@ -18,16 +18,13 @@ class Login
 
     public function setLogin(): void
     {
-        // check if session has started
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
+        
         session_regenerate_id(true);
 
         $_SESSION['logged_on_user'] = [
             'users_id' => $this->users_id,
             'email' => $this->email,
+            'role' => $this->role,
             'last_login_time' => time()
         ];
         $_SESSION['is_logged'] = true;
