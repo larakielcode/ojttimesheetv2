@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $user = Database::query("SELECT users_id, password, role FROM users_login WHERE email = :email", ['email' => $email])->fetch();
 
             if ($user && password_verify($password, $user['password'])) {
-                $loggedUser = new Login($user['users_id'], $email, $user['role']);
+                $loggedUser = Login::executeLogin($user['users_id'], $email, $user['role']);
 
                 Redirect::toDashboard();
             } else {
@@ -37,7 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             }
         } catch (\PDOException $e) {
 
-            $errors['login'] = "A database error occurred.";
+            //$errors['login'] = "A database error occurred.";
+            throw new PDOException($e->getMessage());
         }
     }
 }
