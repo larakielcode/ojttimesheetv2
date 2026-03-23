@@ -8,7 +8,7 @@ class Guest
 
     public function handle()
     {
-        if ($_SESSION['logged_on_user'] ?? false) {
+        if ($_SESSION ?? false) {
             header("location: /dashboard");
             exit();
         }
