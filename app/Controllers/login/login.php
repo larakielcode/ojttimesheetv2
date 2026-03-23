@@ -37,8 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             }
         } catch (\PDOException $e) {
 
-            //$errors['login'] = "A database error occurred.";
-            throw new PDOException($e->getMessage());
+            $errors['login'] = "A database error occurred.";
         }
     }
 }
