@@ -5,7 +5,7 @@ namespace app\Core\Middleware;
 
 class Auth
 {
-    public function handle()
+    public function handle(): void
     {
         if (!$_SESSION ?? false) {
             header("location: /login");

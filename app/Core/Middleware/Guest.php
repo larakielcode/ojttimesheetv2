@@ -6,7 +6,7 @@ namespace app\Core\Middleware;
 class Guest
 {
 
-    public function handle()
+    public function handle(): void
     {
         if ($_SESSION ?? false) {
             header("location: /dashboard");
