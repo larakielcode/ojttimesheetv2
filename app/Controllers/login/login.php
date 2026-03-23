@@ -2,9 +2,14 @@
 
 use App\Core\Database;
 use App\Core\Login;
+use App\Core\Redirect;
 use App\Core\Validation;
 
 $config = require basePath('config/config.php');
+
+// set the default timezone
+$test = date_default_timezone_set($config['app_details']['app_tzone']);
+
 $connection = Database::getConnection($config);
 
 $errors = [];
@@ -20,11 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     if (empty($errors)) {
 
         try {
-            
+
             $user = Database::query("SELECT users_id, password FROM users_login WHERE email = :email", ['email' => $email])->fetch();
 
             if ($user && password_verify($password, $user['password'])) {
                 $loggedUser = new Login($user['users_id'], $email, $connection);
+                Redirect::toDashboard();
             } else {
                 $errors['login'] = "Enter a valid username or password.";
             }
