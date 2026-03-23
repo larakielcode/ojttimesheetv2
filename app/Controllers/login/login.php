@@ -8,7 +8,7 @@ use App\Core\Validation;
 $config = require basePath('config/config.php');
 
 // set the default timezone
-$test = date_default_timezone_set($config['app_details']['app_tzone']);
+date_default_timezone_set($config['app_details']['app_tzone']);
 
 Database::getConnection($config);
 

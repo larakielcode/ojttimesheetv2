@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Core;
 
+use DateTime;
+
 final class Session
 {
     private function __construct()
@@ -19,12 +21,13 @@ final class Session
             if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
                 ini_set('session.cookie_secure', '1');
             }
-
+            $session_name = "OTTrackerv2";
+            session_name($session_name);
             session_start();
         }
     }
 
-    public static function authenticate(int $users_id, string $email, string $role): void
+    public static function authenticate(int $users_id, string $email, string $role, int $time): void
     {
         self::checkSessionStatus();
         session_regenerate_id(true);
@@ -33,7 +36,7 @@ final class Session
             'users_id' => $users_id,
             'email' => $email,
             'role' => $role,
-            'last_login_time' => time()
+            'last_login_time' => $time
         ]);
         self::set('is_logged', true);
     }

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Core;
 
+use DateTime;
+use DateTimeZone;
 use Exception;
 
 
@@ -16,28 +18,31 @@ class Login
     }
 
     //Session::authenticate($this->users_id, $this->email, $this->role);
-    public static function executeLogin($users_id, $email, $role): self
+    public static function executeLogin(int $users_id, string $email, string $role): self
     {
         // instantiate
         $login = new self($users_id, $email, $role);
 
-        // perform sessions set
-        Session::authenticate($users_id, $email, $role);
-
         // update the last login time
-        $login->updateLastLogin();
+        $time = $login->updateLastLogin();
+
+        // perform sessions set
+        Session::authenticate($users_id, $email, $role, $time);
 
         return $login;
     }
 
-    private function updateLastLogin(): void
+    private function updateLastLogin(): int
     {
-        $timenow = date('Y-m-d H:i:s');
+        $timestamp = time();
+        $time = date('Y-m-d H:i:s', $timestamp);
 
         Database::query(
             "UPDATE users_login SET last_login = :time WHERE users_id = :id",
-            ['time' => $timenow, 'id' => $this->users_id]
+            ['time' => $time, 'id' => $this->users_id]
         );
+
+        return $timestamp;
     }
 
 }
