@@ -27,9 +27,9 @@ class Router
         return $this->add('GET', $uri, $controller);
     }
 
-    public function post(string $uri, mixed $controller): void
+    public function post(string $uri, mixed $controller): object
     {
-        $this->add('POST', $uri, $controller);
+        return $this->add('POST', $uri, $controller);
     }
 
     public function route(string $method, string $uri): mixed
@@ -51,5 +51,4 @@ class Router
         $this->routes[array_key_last($this->routes)]['middleware'] = $key;
         return $this;
     }
-
 }
