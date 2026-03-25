@@ -34,7 +34,7 @@ final class Database
 
             self::$instance = new PDO($dsn, $db['db_user'], $db['db_pass'], $config['pdo_options'] ?? []);
         } catch (\PDOException $e) {
-            die("Connection to db failed: " . $e->getMessage());
+            die("A database error has occurred: " . $e->getMessage());
         }
 
         return self::$instance;
