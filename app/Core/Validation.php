@@ -5,7 +5,7 @@ namespace App\Core;
 
 class Validation
 {
-    public static function isEmpty(string $string): bool
+    public static function isEmpty(mixed $string): bool
     {
         return (empty($string));
     }
