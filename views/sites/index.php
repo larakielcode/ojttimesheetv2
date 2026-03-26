@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../public/assets/css/login.css">
     <title>Sites</title>
 </head>
 <body>
@@ -17,6 +18,12 @@
             <td></td>
             <td>
                 <button type="submit" name="submit">Add site</button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <span class="class=" notif-errors""> <?= $errors['site'] ?? '' ?></span>
             </td>
         </tr>
     </table>
