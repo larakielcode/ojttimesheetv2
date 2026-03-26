@@ -20,7 +20,9 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (Validation::isEmpty($errors)) {
         $result = Sites::siteAdd($sitename);
         if ($result) {
-            
+            header("location: /sites/create");
+            $_SESSION['successMsg'] = "Site name added successfully.";
+            exit();
         }
     }
 }

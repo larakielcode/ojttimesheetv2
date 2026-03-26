@@ -11,6 +11,10 @@
 <form action="/sites/create" method="post">
     <table>
         <tr>
+            <td></td>
+            <td><?= $_SESSION['successMsg'] ?? '' ?></td>
+        </tr>
+        <tr>
             <td><label for="sitename">Site Name</label></td>
             <td><input type="text" name="sitename" required></td>
         </tr>
@@ -33,5 +37,6 @@
 <br>
 <a href="/dashboard">Go back to dashboard</a>
 
+<?php $_SESSION['successMsg'] = ''; ?>
 </body>
 </html>
