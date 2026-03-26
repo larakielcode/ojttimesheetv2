@@ -13,5 +13,9 @@ $router->post('/logout', 'app/Controllers/logout.php');
 $router->get('/dashboard', 'app/Controllers/dashboard/index.php')->only('auth'); # view the dashboard
 
 
+// Routes for sites
+$router->get('/sites/create', 'app/Controllers/sites/index.php')->only('auth');
+$router->post('/sites/create', 'app/Controllers/sites/create.php');
+
 // this is for migrations
 $router->get('/migrations', 'migrations/migrations.php');

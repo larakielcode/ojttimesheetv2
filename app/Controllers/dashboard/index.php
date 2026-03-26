@@ -1,9 +1,11 @@
 <?php
+
 use App\Core\Session;
+
 Session::checkIdle(); # this will check if the user is inactive for 30mins
 
 
-echo "Hello! Welcome to the dashboard";
+echo "Hello! Welcome to the dashboard <br><br>{$_SESSION['logged_on_user']['email']}";
 
 ?>
 <!DOCTYPE html>
@@ -16,15 +18,16 @@ echo "Hello! Welcome to the dashboard";
 </head>
 
 <body>
-    <form action="/logout" method="POST">
+<form action="/logout" method="POST">
 
-        <br>
-        <button type="submit" class="logout-btn">
-            Logout
-        </button>
+    <br><br>
+    <a href="/sites/create">Add a new site</a>
+    <br><br><br>
+    <button type="submit" name="submit" class="logout-btn">
+        Logout
+    </button>
 
-    </form>
+</form>
 </body>
-<?= dd($_SESSION); ?>?>
 
 </html>
