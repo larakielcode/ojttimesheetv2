@@ -12,6 +12,3 @@ require basePath('routes/routes.php');
 
 // get the route
 $router->route($method, $uri);
-
-
-// test verified badge from work pc
