@@ -17,7 +17,7 @@
         <form action="/" method="post" class="flex flex-col gap-2 p-2">
             <label class="label-primary" for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="user@domain.com" required autocomplete="email"
-                class="textbox-primary">
+                class="textbox-primary" value="<?= isset($errors['login']) ? $_POST['email'] : ''; ?>">
             <label class="label-primary mt-4" for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Password" required
                 class="textbox-primary">
