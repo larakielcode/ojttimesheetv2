@@ -1,17 +1,85 @@
 /* CSS Reset — Eric Meyer's Reset v2.0 (adapted) */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -20,34 +88,68 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
-body { line-height: 1; }
-ol, ul { list-style: none; }
-blockquote, q { quotes: none; }
-blockquote::before, blockquote::after,
-q::before, q::after { content: ''; content: none; }
-table { border-collapse: collapse; border-spacing: 0; }
-*, *::before, *::after { box-sizing: border-box; }
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 /* Custom Properties */
 :root {
-  --bg-page:       #ffffff;
-  --bg-card:       #eef0f4;
-  --border-card:   #b8c8d8;
-  --text-heading:  #111111;
-  --text-label:    #333333;
-  --placeholder:   #aaaaaa;
-  --input-bg:      #ffffff;
-  --input-border:  #b0b8c4;
-  --input-focus:   #3a7bbf;
-  --btn-bg:        #2459a3;
-  --btn-hover:     #245a8c;
-  --btn-text:      #ffffff;
-  --font-main:     'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --bg-page: #ffffff;
+  --bg-card: #eef0f4;
+  --border-card: #b8c8d8;
+  --text-heading: #111111;
+  --text-label: #333333;
+  --placeholder: #aaaaaa;
+  --input-bg: #ffffff;
+  --input-border: #b0b8c4;
+  --input-focus: #3a7bbf;
+  --btn-bg: #2459a3;
+  --btn-hover: #245a8c;
+  --btn-text: #ffffff;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Base */
@@ -69,7 +171,7 @@ body {
   background-color: var(--bg-card);
   border: 1.5px solid var(--border-card);
   border-radius: 12px;
-  width: 600px;
+  width: 650px;
   padding: 32px 32px;
   gap: 0;
 }
@@ -100,12 +202,13 @@ body {
 
 /* Right Section — Login Box (equal half) */
 .login-box {
-  flex: 1;
+  flex: 1.5;
   display: flex;
   flex-direction: column;
-  padding-left: 24px;
+  padding-left: 45px;
   /* CHANGED: center all children horizontally so h2 aligns to center of this column */
   align-items: center;
+  gap: 8px;
 }
 
 /* LOG IN heading */
@@ -143,10 +246,12 @@ body {
 label {
   font-size: 13px;
   font-weight: 600;
+  margin-bottom: 5px;
   color: var(--text-label);
 }
 
 input[type="text"],
+input[type="email"],
 input[type="password"] {
   width: 100%;
   padding: 8px 15px;
@@ -161,12 +266,14 @@ input[type="password"] {
 }
 
 input[type="text"]::placeholder,
+input[type="email"]::placeholder,
 input[type="password"]::placeholder {
   color: var(--placeholder);
   font-size: 12px;
 }
 
 input[type="text"]:focus,
+input[type="email"]::focus,
 input[type="password"]:focus {
   border-color: var(--input-focus);
   box-shadow: 0 0 0 2px rgba(58, 123, 191, 0.18);
@@ -178,8 +285,18 @@ input[type="password"]:focus {
 }
 
 .notif-errors {
+  display: block;
+  text-align: center;
   font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
   color: red;
+  margin-top: 15px;
+}
+
+.divider {
+  width: 10px;
+  background-color: #e7ece9;
 }
 
 /* Submit Button */
