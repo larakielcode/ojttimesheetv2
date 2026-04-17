@@ -1,0 +1,334 @@
+<!-- ── interns.view.html ─────────────────────────────────────────── -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/public/assets/css/interns.css" />
+  <title>Omega Healthcare – Interns</title>
+</head>
+
+<body>
+
+  <!-- ── SIDEBAR ─────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-spacer"></div>
+    <nav class="sidebar-nav">
+      <a href="/views/dashboard.view.html" class="nav-item">
+        <img src="/public/assets/images/dashboard_icon.png" alt="Dashboard icon">
+        Dashboard
+      </a>
+      <a href="/views/reports.view.html" class="nav-item">
+        <img src="/public/assets/images/reports_icon.png" alt="Reports icon">
+        Reports
+      </a>
+      <a href="/views/interns.view.html" class="nav-item active">
+        <img src="/public/assets/images/interns_icon.png" alt="Interns icon">
+        Interns
+      </a>
+      <a href="#" class="nav-item">
+        <img src="/public/assets/images/logout_icon.png" alt="Log Out icon">
+        Log Out
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ── MAIN ─────────────────────────────────────────────── -->
+  <div class="main">
+
+    <header class="topbar">
+      <div class="topbar-logo">
+        <img src="/public/assets/images/omegalogo.png" alt="Omega Logo">
+      </div>
+      <div class="topbar-user-section">
+        <span class="topbar-user">Currently logged as: Admin</span>
+        <img src="/public/assets/images/user icon.png" alt="User avatar">
+      </div>
+    </header>
+
+    <!-- ── PAGE CONTENT ──────────────────────────────────── -->
+    <div class="page-content">
+
+      <div class="tab-bar">
+        <button class="tab active" onclick="switchTab(this, 'all')">ALL INTERNS</button>
+        <button class="tab" onclick="switchTab(this, 'active')">ACTIVE</button>
+        <button class="tab" onclick="switchTab(this, 'inactive')">INACTIVE</button>
+      </div>
+
+      <div class="toolbar">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none">
+            <circle cx="9" cy="9" r="6" stroke="#aaa" stroke-width="1.8" />
+            <path d="M13.5 13.5L17 17" stroke="#aaa" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search by name or ID..."
+            oninput="filterCards()" />
+        </div>
+        <button class="add-btn" onclick="openModal()">+ Add Intern</button>
+      </div>
+
+      <div class="table-card">
+        <table class="intern-table">
+          <thead>
+            <tr>
+              <th>Intern ID</th>
+              <th>Name</th>
+              <th>School</th>
+              <th>Site</th>
+              <th>Hours Progress</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="intern-row" onclick="openProfile(this)" data-id="001" data-firstname="Jean Claudette"
+              data-middlename="" data-lastname="Pena" data-school="CTU" data-required="729" data-hours="300"
+              data-email="jean.pena@example.com" data-mobile="639123456789" data-address="Cebu City, Cebu"
+              data-status="active" data-site="Cebu">
+              <td>001</td>
+              <td>Jean Claudette Pena</td>
+              <td>CTU</td>
+              <td><span class="site-badge badge-cebu">Cebu</span></td>
+              <td>
+                <div class="hours-cell">
+                  <div class="hours-bar-track">
+                    <div class="hours-bar-fill" style="width: 41%;"></div>
+                  </div>
+                  <span class="hours-text">300/729 hrs</span>
+                </div>
+              </td>
+              <td><span class="status-badge badge-active">Active</span></td>
+            </tr>
+            <tr class="intern-row" onclick="openProfile(this)" data-id="002" data-firstname="Vera" data-middlename=""
+              data-lastname="Angeli" data-school="DLSU" data-required="729" data-hours="250"
+              data-email="vera.angeli@example.com" data-mobile="639234567890" data-address="Manila, Metro Manila"
+              data-status="inactive" data-site="Manila">
+              <td>002</td>
+              <td>Vera Angeli</td>
+              <td>DLSU</td>
+              <td><span class="site-badge badge-manila">Manila</span></td>
+              <td>
+                <div class="hours-cell">
+                  <div class="hours-bar-track">
+                    <div class="hours-bar-fill" style="width: 34%;"></div>
+                  </div>
+                  <span class="hours-text">250/729 hrs</span>
+                </div>
+              </td>
+              <td><span class="status-badge badge-inactive">Inactive</span></td>
+            </tr>
+            <tr class="intern-row" onclick="openProfile(this)" data-id="003" data-firstname="Renz Lorenzo"
+              data-middlename="" data-lastname="Mercado" data-school="CIT-U" data-required="600" data-hours="120"
+              data-email="renz.mercado@example.com" data-mobile="639345678901" data-address="Mandaue City, Cebu"
+              data-status="active" data-site="Cebu">
+              <td>003</td>
+              <td>Renz Lorenzo Mercado</td>
+              <td>CIT-U</td>
+              <td><span class="site-badge badge-cebu">Cebu</span></td>
+              <td>
+                <div class="hours-cell">
+                  <div class="hours-bar-track">
+                    <div class="hours-bar-fill" style="width: 20%;"></div>
+                  </div>
+                  <span class="hours-text">120/600 hrs</span>
+                </div>
+              </td>
+              <td><span class="status-badge badge-active">Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="no-results" id="noResults" style="display:none;">No interns found.</p>
+
+    </div><!-- /page-content -->
+  </div><!-- /main -->
+
+  <!-- ── ADD INTERN MODAL ──────────────────────────────── -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Add New Intern</h2>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label>Middle Name</label>
+            <input type="text" placeholder="Middle name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>School</label>
+            <input type="text" placeholder="School / University">
+          </div>
+          <div class="form-group">
+            <label>Required Hours</label>
+            <input type="number" placeholder="e.g. 600">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="email@example.com">
+          </div>
+          <div class="form-group">
+            <label>Mobile No.</label>
+            <input type="text" placeholder="639XXXXXXXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" placeholder="Address">
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+            <label>Site Location</label>
+            <select>
+              <option value="1">Manila</option>
+              <option value="2">Cebu</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="Password">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn-save">Save Intern</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VIEW / EDIT PROFILE MODAL ────────────────────── -->
+  <div class="modal-overlay" id="profileOverlay" onclick="closeProfileOutside(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="profile-header-info">
+          <h2 id="profileFullName">Intern Profile</h2>
+          <span id="profileIdBadge" class="profile-id-badge"></span>
+        </div>
+        <button class="modal-close" onclick="closeProfile()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="profileFirstName" class="profile-field" readonly>
+          </div>
+          <div class="form-group">
+            <label>Middle Name</label>
+            <input type="text" id="profileMiddleName" class="profile-field" readonly>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="profileLastName" class="profile-field" readonly>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>School</label>
+            <input type="text" id="profileSchool" class="profile-field" readonly>
+          </div>
+          <div class="form-group">
+            <label>Required Hours</label>
+            <input type="number" id="profileRequired" class="profile-field" readonly>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Hours Completed</label>
+            <input type="number" id="profileHours" class="profile-field" readonly>
+          </div>
+          <div class="form-group">
+            <label>Hours Progress</label>
+            <div class="profile-progress-wrap">
+              <div class="hours-bar-track profile-bar-track">
+                <div class="hours-bar-fill" id="profileProgressBar" style="width: 0%;"></div>
+              </div>
+              <span class="hours-text" id="profileProgressText"></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="profileEmail" class="profile-field" readonly>
+          </div>
+          <div class="form-group">
+            <label>Mobile No.</label>
+            <input type="text" id="profileMobile" class="profile-field" readonly>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" id="profileAddress" class="profile-field" readonly>
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select id="profileStatus" class="profile-field" disabled>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+            <label>Site Location</label>
+            <select id="profileSite" class="profile-field" disabled>
+              <option value="Manila">Manila</option>
+              <option value="Cebu">Cebu</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer profile-footer">
+        <button class="btn-delete" onclick="confirmDelete()">Delete</button>
+        <div class="profile-footer-right">
+          <button class="btn-cancel" id="profileCancelBtn" style="display:none;" onclick="cancelEdit()">Cancel</button>
+          <button class="btn-edit" id="profileEditBtn" onclick="toggleEditMode()">Edit</button>
+          <button class="btn-save" id="profileSaveBtn" style="display:none;" onclick="saveProfile()">Save
+            Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DELETE CONFIRM MODAL ──────────────────────────── -->
+  <div class="modal-overlay" id="deleteOverlay" onclick="closeDeleteOutside(event)">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2>Delete Intern</h2>
+        <button class="modal-close" onclick="closeDeleteConfirm()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="delete-confirm-text">Are you sure you want to delete <strong id="deleteInternName"></strong>? This
+          action cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeDeleteConfirm()">Cancel</button>
+        <button class="btn-delete" onclick="deleteIntern()">Yes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/public/assets/js/intern.view.js"></script>
+
+</body>
+
+</html>
