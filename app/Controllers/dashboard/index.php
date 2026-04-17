@@ -1,4 +1,3 @@
 <?php
 
-echo "Hello! Welcome to the dashboard";
-dd($_SESSION);
+require views('dashboard.view.php');

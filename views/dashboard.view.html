@@ -1,0 +1,223 @@
+<!-- dashboard.view.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/public/assets/css/dashboard.css" />
+  <title>Omega Healthcare – Admin Dashboard</title>
+</head>
+
+<body>
+
+  <aside class="sidebar">
+
+    <!--
+    <div class="sidebar-logo">
+      <div class="logo-placeholder">
+        <img src="/public/assets/images/omegalogo.png" alt="">
+      </div>
+    </div>
+    -->
+
+    <div class="sidebar-spacer"></div>
+
+
+    <nav class="sidebar-nav">
+
+      <!-- Dashboard-->
+      <a href="/views/dashboard.view.html" class="nav-item active">
+        Dashboard
+        <img src="/public/assets/images/dashboard_icon.png" alt="Dashboard icon">
+      </a>
+
+      <!-- Reports -->
+      <a href="/views/reports.view.html" class="nav-item">
+        Reports
+        <img src="/public/assets/images/reports_icon.png" alt="Reports icon">
+      </a>
+
+      <!-- Interns -->
+      <a href="/views/interns.view.html" class="nav-item">
+        Interns
+        <img src="/public/assets/images/interns_icon.png" alt="Interns icon">
+      </a>
+
+      <a href="#" class="nav-item">
+        Log Out
+        <img src="/public/assets/images/logout_icon.png" alt="Log Out icon">
+      </a>
+
+    </nav>
+
+    <!--<div class="sidebar-footer">
+      <button class="logout-btn">Log Out</button>
+    </div>
+    -->
+
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+
+      <div class="topbar-logo">
+        <img src="/public/assets/images/omegalogo.png" alt="Omega Logo">
+      </div>
+
+
+      <div class="topbar-user-section">
+        <span class="topbar-user">Currently logged as: Admin</span>
+        <img src="/public/assets/images/user icon.png" alt="User avatar">
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+      <h1 class="dashboard-title">Dashboard</h1>
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+
+        <!-- Left: two stat cards -->
+        <div class="stat-cards-col">
+
+          <!-- Total Interns -->
+          <div class="stat-card">
+            <div class="stat-icon">
+              <!-- Person icon -->
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Total Interns</span>
+              <span class="stat-number">5,423</span>
+              <span class="stat-change up">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M5 2L9 7H1L5 2Z" fill="#27ae60" />
+                </svg>
+                16 this month
+              </span>
+            </div>
+          </div>
+
+          <!-- Total Active Interns -->
+          <div class="stat-card">
+            <div class="stat-icon" style="background-color:#fce8e8;">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill:#932928;">
+                <path
+                  d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Total Active Interns</span>
+              <span class="stat-number">3,561</span>
+              <span class="stat-change down">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M5 8L1 3H9L5 8Z" fill="#932928" />
+                </svg>
+                16 inactive this month
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+        <!--Interns by Site -->
+        <div class="site-card">
+          <div class="site-card-title">Interns by Site</div>
+
+          <div class="site-bar-row">
+            <span class="site-bar-label">Manila</span>
+            <div class="site-bar-track">
+              <div class="site-bar-fill" style="width: 72%;"></div>
+            </div>
+            <span class="site-bar-count">962</span>
+          </div>
+
+          <div class="site-bar-row">
+            <span class="site-bar-label">Cebu</span>
+            <div class="site-bar-track">
+              <div class="site-bar-fill" style="width: 64%;"></div>
+            </div>
+            <span class="site-bar-count">854</span>
+          </div>
+
+          <hr class="site-divider">
+
+          <div class="school-label">by School</div>
+          <div class="school-tags">
+            <span class="school-tag tag-ust">UST – 14</span>
+            <span class="school-tag tag-ctu">CTU – 14</span>
+            <span class="school-tag tag-dlsu">DLSU – 20</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Intern Table -->
+      <div class="table-card">
+        <table class="intern-table">
+          <thead>
+            <tr>
+              <th>Intern ID</th>
+              <th>Name</th>
+              <th>School</th>
+              <th>Site</th>
+              <th>Hours Progress</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>001</td>
+              <td>Jean Claudette Pena</td>
+              <td>CTU</td>
+              <td><span class="site-badge badge-cebu">Cebu</span></td>
+              <td>
+                <div class="hours-cell">
+                  <div class="hours-bar-track">
+                    <div class="hours-bar-fill" style="width: 41%;"></div>
+                  </div>
+                  <span class="hours-text">300/729 hrs</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>002</td>
+              <td>Vera Angeli</td>
+              <td>DLSU</td>
+              <td><span class="site-badge badge-manila">Manila</span></td>
+              <td>
+                <div class="hours-cell">
+                  <div class="hours-bar-track">
+                    <div class="hours-bar-fill" style="width: 34%;"></div>
+                  </div>
+                  <span class="hours-text">250/729 hrs</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>003</td>
+              <td>Renz Lorenzo Mercado</td>
+              <td>CIT-U</td>
+              <td><span class="site-badge badge-cebu">Cebu</span></td>
+              <td>
+                <div class="hours-cell">
+                  <div class="hours-bar-track">
+                    <div class="hours-bar-fill" style="width: 20%;"></div>
+                  </div>
+                  <span class="hours-text">120/600 hrs</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
