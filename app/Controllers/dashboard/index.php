@@ -1,3 +1,3 @@
 <?php
 
-require views('dashboard.view.php');
+require views('portal.view.php');
