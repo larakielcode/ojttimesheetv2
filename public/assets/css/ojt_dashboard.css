@@ -150,47 +150,144 @@ body {
 
 /* ── PAGE CONTENT ──────────────────────────────────────── */
 .page-content {
-    padding: 118px 60px;
+    padding: 40px 60px 60px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-    /* ─── INTERN TABLE ───────────────────────────────────── */
-    .table-card {
-      background: #dce5f0;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
- 
-    .intern-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
- 
-    .intern-table thead tr {
-      background-color: #dce5f0;
-    }
- 
-    .intern-table thead th {
-      padding: 14px 20px;
-      text-align: left;
-      font-size: 13px;
-      font-weight: 600;
-      color: #2c2c2c;
-    }
- 
-    .intern-table tbody tr {
-      background-color: #ffffff;
-      border-top: 1px solid #e8e4de;
-    }
- 
-    .intern-table tbody tr:hover {
-      background-color: #f9f7f4;
-    }
- 
-    .intern-table tbody td {
-      padding: 14px 20px;
-      font-size: 13px;
-      color: #000000;
-    }
- 
+/* ── CONTROLS ROW (date/time + clock button) ───────────── */
+.controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.current-datetime {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+    background: #2459a3;
+    border-left: 4px solid #c0392b;
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+/* ── CLOCK BUTTON ──────────────────────────────────────── */
+.clock-btn {
+    padding: 10px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    letter-spacing: 0.03em;
+}
+
+.clock-btn:active {
+    transform: scale(0.97);
+}
+
+.clock-btn.clock-in {
+    background-color: #2459a3;
+    color: #ffffff;
+}
+
+.clock-btn.clock-in:hover {
+    background-color: #1a4080;
+}
+
+.clock-btn.clock-out {
+    background-color: #c0392b;
+    color: #ffffff;
+}
+
+.clock-btn.clock-out:hover {
+    background-color: #a93226;
+}
+
+/* ── INTERN TABLE ────────────────────────────────────────── */
+.table-card {
+    background: #dce5f0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.intern-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.intern-table thead tr {
+    background-color: #dce5f0;
+}
+
+.intern-table thead th {
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+.intern-table tbody tr {
+    background-color: #ffffff;
+    border-top: 1px solid #e8e4de;
+}
+
+.intern-table tbody tr:hover {
+    background-color: #f9f7f4;
+}
+
+.intern-table tbody td {
+    padding: 14px 20px;
+    font-size: 13px;
+    color: #000000;
+}
+
+/* ── PAGINATION ────────────────────────────────────────── */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.page-btn {
+    min-width: 34px;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #d0cac2;
+    background-color: #ffffff;
+    color: #2c2c2c;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.page-btn:hover:not(.disabled):not(.active) {
+    background-color: #eef2f8;
+    border-color: #2459a3;
+    color: #2459a3;
+}
+
+.page-btn.active {
+    background-color: #2459a3;
+    color: #ffffff;
+    border-color: #2459a3;
+    cursor: default;
+}
+
+.page-btn.disabled {
+    color: #b0a89e;
+    cursor: not-allowed;
+    border-color: #e0dbd4;
+}

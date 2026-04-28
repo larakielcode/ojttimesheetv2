@@ -1,12 +1,12 @@
-<!-- ── reports.view.html ─────────────────────────────────────────── -->
+<!-- ── ojt.dashboard.view.html ─────────────────────────────────────────── -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/assets/css/ojt_report.css" />
-    <title>Omega Healthcare – Reports</title>
+    <link rel="stylesheet" href="/public/assets/css/ojt_dashboard.css" />
+    <title>Omega Healthcare – Dashboard</title>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
                 <img src="/public/assets/images/omegalogo.png" alt="Omega Logo">
             </div>
             <div class="topbar-user-section">
-                <span class="topbar-user">Currently logged as: Admin</span>
+                <span class="topbar-user">Currently logged as: Jean Claudette Pena</span>
                 <img src="/public/assets/images/user icon.png" alt="User avatar">
             </div>
         </header>
@@ -41,7 +41,11 @@
         <!-- ── PAGE CONTENT ──────────────────────────────────── -->
         <div class="page-content">
 
-            <div class="content-spacer"></div>
+            <!-- ── DATE/TIME + CLOCK BUTTON ROW ──────────────── -->
+            <div class="controls-row">
+                <div class="current-datetime" id="currentDatetime"></div>
+                <button class="clock-btn clock-in" id="clockBtn" onclick="toggleClock()">Clock In</button>
+            </div>
 
             <div class="table-card">
                 <table class="intern-table">
@@ -53,7 +57,7 @@
                             <th>Total no. of Hours</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tableBody">
                         <tr>
                             <td>Mar 02, 2026 (Mon)</td>
                             <td>01:01:45 PM</td>
@@ -63,33 +67,80 @@
                         <tr>
                             <td>Mar 03, 2026 (Tue)</td>
                             <td>01:00:00 PM</td>
-                            <td> 10:02:25 PM</td>
-                            <td> 12.18</td>
+                            <td>10:02:25 PM</td>
+                            <td>12.18</td>
                         </tr>
                         <tr>
                             <td>Mar 04, 2026 (Wed)</td>
                             <td>09:51:49 AM</td>
-                            <td> 10:02:36 PM</td>
+                            <td>10:02:36 PM</td>
                             <td>9.04</td>
                         </tr>
                         <tr>
-                            <td>Mar 04, 2026 (Wed)</td>
-                            <td>09:51:49 AM</td>
-                            <td> 10:02:36 PM</td>
-                            <td>9.04</td>
+                            <td>Mar 05, 2026 (Thu)</td>
+                            <td>08:30:00 AM</td>
+                            <td>05:30:00 PM</td>
+                            <td>9.00</td>
                         </tr>
                         <tr>
-                            <td>Mar 04, 2026 (Wed)</td>
-                            <td>09:51:49 AM</td>
-                            <td> 10:02:36 PM</td>
-                            <td>9.04</td>
+                            <td>Mar 06, 2026 (Fri)</td>
+                            <td>09:00:00 AM</td>
+                            <td>06:00:00 PM</td>
+                            <td>9.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mar 09, 2026 (Mon)</td>
+                            <td>08:45:00 AM</td>
+                            <td>05:45:00 PM</td>
+                            <td>9.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mar 10, 2026 (Tue)</td>
+                            <td>09:15:00 AM</td>
+                            <td>06:15:00 PM</td>
+                            <td>9.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mar 11, 2026 (Wed)</td>
+                            <td>08:00:00 AM</td>
+                            <td>05:00:00 PM</td>
+                            <td>9.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mar 12, 2026 (Thu)</td>
+                            <td>09:30:00 AM</td>
+                            <td>06:30:00 PM</td>
+                            <td>9.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mar 13, 2026 (Fri)</td>
+                            <td>08:15:00 AM</td>
+                            <td>05:15:00 PM</td>
+                            <td>9.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mar 16, 2026 (Mon)</td>
+                            <td>09:00:00 AM</td>
+                            <td>06:00:00 PM</td>
+                            <td>9.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mar 17, 2026 (Tue)</td>
+                            <td>08:30:00 AM</td>
+                            <td>05:30:00 PM</td>
+                            <td>9.00</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <!-- ── PAGINATION ─────────────────────────────────── -->
+            <div class="pagination" id="pagination"></div>
+
         </div><!-- /page-content -->
     </div><!-- /main -->
 
-</body>
+    <script src="/public/assets/js/ojt.dashboard.js"></script>
 
+</body>
 </html>

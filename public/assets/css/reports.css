@@ -287,3 +287,12 @@ body {
   font-size: 14px;
   margin-top: 32px;
 }
+
+.intern-row {
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.intern-row:hover {
+    background-color: #eef3fb !important;
+}
