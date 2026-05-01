@@ -41,7 +41,7 @@ class Router
                 }
                 return require basePath($route['controller']);
             } else {
-                dd('Aborted');
+                Errors::abort("Page not found!");
             }
         }
         return false; # get back to this after creating errors page
