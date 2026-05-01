@@ -1,3 +1,3 @@
 <?php
 
-require views('portal.view.php');
+views('portal.view.php');

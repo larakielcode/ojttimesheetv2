@@ -1,3 +1,3 @@
 <?php
 
-require views('login_page.php');
+views('login_page.php');

@@ -17,7 +17,7 @@
         <form action="/login" method="post" class="flex flex-col gap-2 p-2">
             <label class="label-primary" for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="user@domain.com" required autocomplete="email"
-                class="textbox-primary" value="<?= isset($errors['login']) ? $_POST['email'] : ''; ?>">
+                class="textbox-primary" value="<?= isset($errors['login']) ? htmlspecialchars($_POST['email']) : ''; ?>">
             <label class="label-primary mt-4" for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Password" required
                 class="textbox-primary">
@@ -33,7 +33,7 @@
             <?php if (isset($errors['login'])): ?>
                 <p style="color: red; font-weight: 500; font-size: 14px; text-align: center; margin: 10px 0 5px 0;">
 
-                    <?= $errors['login'] ?>
+                    <?= htmlspecialchars($errors['login']) ?>
                 </p>
             <?php endif; ?>
         </div>
