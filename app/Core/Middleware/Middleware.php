@@ -10,7 +10,7 @@ class Middleware
         'auth' => Auth::class
     ];
 
-    public static function resolve($key): void
+    public static function resolve(string $key): void
     {
         $middleware = static::mwMAP[$key] ?? false;
 
