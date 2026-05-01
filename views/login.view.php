@@ -14,7 +14,7 @@
         <h1 class="my-5 text-3xl font-semibold tracking-tight text-second text-center">
             OJT Timetracker Portal
         </h1>
-        <form action="/" method="post" class="flex flex-col gap-2 p-2">
+        <form action="/login" method="post" class="flex flex-col gap-2 p-2">
             <label class="label-primary" for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="user@domain.com" required autocomplete="email"
                 class="textbox-primary" value="<?= isset($errors['login']) ? $_POST['email'] : ''; ?>">

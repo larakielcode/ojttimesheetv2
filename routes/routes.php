@@ -2,7 +2,7 @@
 
 // Routes for Login
 $router->get('/', 'app/Controllers/login/index.php')->only('guest'); # view the login page
-$router->post('/', 'app/Controllers/login/login.php'); # logged the user in
+$router->post('/login', 'app/Controllers/login/login.php'); # logged the user in
 
 $router->get('/login', 'app/Controllers/login/index.php')->only('guest');
 $router->get('/logout', 'app/Controllers/logout.php')->only('auth');
@@ -19,3 +19,6 @@ $router->post('/sites/create', 'app/Controllers/sites/create.php');
 
 // this is for migrations
 $router->get('/migrations', 'migrations/migrations.php');
+
+// Error routes
+$router->get('/404', 'app/Controllers/errors/404.php');

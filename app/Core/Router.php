@@ -40,6 +40,8 @@ class Router
                     Middleware::resolve($route['middleware']);
                 }
                 return require basePath($route['controller']);
+            } else {
+                dd('Aborted');
             }
         }
         return false; # get back to this after creating errors page
