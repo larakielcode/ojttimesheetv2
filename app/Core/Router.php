@@ -45,7 +45,7 @@ class Router
         return false; # get back to this after creating errors page
     }
 
-    public function only($key): object
+    public function only(string $key): object
     {
         $this->routes[array_key_last($this->routes)]['middleware'] = $key;
         return $this;
