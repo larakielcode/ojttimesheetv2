@@ -12,7 +12,7 @@ require 'partials/dashboard/top.partials.php';
   <h1 class="content-heading">Dashboard</h1>
   <!-- End CONTENT TITLE -->
 
-  <!-- Start CONTENT -->
+  <!-- Start CONTENT || CONTENT on DASHBOARD goes here-->
 
 
 </div>
