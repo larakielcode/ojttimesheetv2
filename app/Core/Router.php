@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Core;
@@ -40,10 +41,9 @@ class Router
                     Middleware::resolve($route['middleware']);
                 }
                 return require basePath($route['controller']);
-            } else {
-                dd('Aborted');
             }
         }
+        Errors::abort("Page not found!");
         return false; # get back to this after creating errors page
     }
 
