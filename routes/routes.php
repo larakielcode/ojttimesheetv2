@@ -12,7 +12,7 @@ $router->post('/logout', 'app/Controllers/logout.php');
 
 
 # Routes for Dashboard
-$router->get('/dashboard', 'app/Controllers/dashboard/index.php')->only('auth'); # view the dashboard | portal.view.php
+$router->get('/dashboard', 'app/Controllers/dashboard/index.php')->only('auth'); # view the dashboard | dashboard.view.php
 
 
 # Routes for sites
