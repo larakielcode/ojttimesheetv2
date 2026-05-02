@@ -19,6 +19,3 @@ $router->post('/sites/create', 'app/Controllers/sites/create.php');
 
 // this is for migrations
 $router->get('/migrations', 'migrations/migrations.php');
-
-// Error routes
-$router->get('/404', 'app/Controllers/errors/404.php');
