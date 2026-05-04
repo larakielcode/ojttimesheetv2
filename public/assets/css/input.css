@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "tailwindcss";
+
+@theme {
+    --font-poppins: "Poppins", sans-serif;
+    --color-primary: #2056a1;
+    --color-primary-light: #508bdc;
+    --color-secondary: #8e1918; /* #A12B20 1B4888 8E1918*/
+    --color-secondary-shade: #b3211e;
+}
+
+@layer components {
+    .bg {
+        background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='32' height='32' patternTransform='scale(1) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='%23fafaf9ff'/><path d='M37.657 10.343l-4.243 4.243m-2.828 2.828l-4.243 4.243m11.314 0l-4.243-4.243m-2.828-2.828l-4.243-4.243m-20.686 0l-4.243 4.243m-2.828 2.828l-4.243 4.243m11.314 0l-4.243-4.243m-2.828-2.828l-4.243-4.243'  stroke-linecap='square' stroke-width='1' stroke='%23d6d3d1ff' fill='none'/><path d='M16-8v6m0 4v6m8-8h-6m-4 0H8m8 24v6m0 4v6m8-8h-6m-4 0H8'  stroke-linecap='square' stroke-width='1' stroke='%23d6d3d1ff' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+    }
+
+    .login-label {
+        @apply text-sm font-medium tracking-tight text-stone-700;
+    }
+
+    .login-textbox {
+        @apply block w-full my-2 p-3 text-sm rounded-md text-stone-700;
+        @apply border border-stone-400 bg-white/60 indent-7 placeholder:font-light;
+        @apply hover:outline-0 focus:outline-0 hover:border-stone-600 hover:bg-white;
+        @apply transition ease-in duration-150;
+    }
+
+    .login-textcontainer {
+        @apply flex items-center;
+    }
+
+    .login-icon {
+        @apply absolute ml-2 text-stone-700;
+    }
+
+    /* Buttons */
+    .button-confirm {
+        @apply py-2 px-10 rounded-md inline-flex items-center justify-between gap-1;
+        @apply bg-primary text-white text-sm font-medium;
+    }
+
+    /* Errors notif */
+    .error-notif {
+        @apply text-sm tracking-tight font-medium;
+        @apply bg-red-100 w-full py-1 rounded-sm text-red-700;
+    }
+}

@@ -21,3 +21,7 @@ $router->post('/sites/create', 'app/Controllers/sites/create.php');
 
 # this is for migrations
 $router->get('/migrations', 'migrations/migrations.php');
+
+
+# this is for test page
+$router->get('/test', 'app/Controllers/test.php');
