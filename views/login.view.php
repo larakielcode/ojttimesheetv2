@@ -45,6 +45,11 @@
         </div>
     </form>
 </div>
+<p class="text-xs mt-10 py-1 rounded-sm font-medium tracking-tight absolute bottom-3 text-stone-700">
+        <a 
+        class="hover:bg-secondary-shade hover:py-1 hover:rounded-sm hover:text-white"
+        href="https://github.com/larakielcode/ojttimesheetv2" target="_blank"><span class="bg-primary/20 py-1 px-3 rounded-sm">larakielcode</span></a> All rights reserved &copy;2026
+    </p>
 
 <script>
     let x = document.getElementById('error-notif');
