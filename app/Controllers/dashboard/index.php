@@ -1,3 +1,3 @@
 <?php
 
-views('dashboard.view.php');
+require views('dashboard.view.php');
