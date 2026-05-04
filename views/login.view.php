@@ -10,7 +10,7 @@
 
 <img class="w-80 mb-8" src="../assets/images/omegalogo.png" alt="">
 <div class="flex flex-col items-center justify-center bg-stone-100/60 w-fit h-fit rounded-md border border-stone-200 p-5">
-    <h1 class="font-bold text-3xl p-5 text-shadow-sm">
+    <h1 class="font-bold text-3xl p-5 text-shadow-sm select-none">
         <span class="text-primary">Intern</span> 
         <span class="text-secondary">Timetracker </span>
         <span class="text-stone-600/80">Portal</span>    
