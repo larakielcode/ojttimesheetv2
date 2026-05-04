@@ -1,14 +1,14 @@
-<?php 
+<?php
 
-declare(strict_types=1); 
+declare(strict_types=1);
 
 namespace App\Core;
 
-final class Errors {
-    public static function abort(string $message, int $errorCode = 404): void
+final class Errors
+{
+    public static function abort(string $message, int $code = 404): void
     {
-        http_response_code($errorCode);
+        http_response_code($code);
         echo $message;
-        exit();
     }
 }
