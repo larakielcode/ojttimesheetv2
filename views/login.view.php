@@ -9,7 +9,7 @@
 <body class="font-poppins h-dvh flex flex-col justify-center items-center bg">
 
 <img class="w-80 mb-8" src="../assets/images/omegalogo.png" alt="">
-<div class="flex flex-col items-center justify-center bg-stone-400/25 w-fit h-fit rounded-md border-2 border-stone-200 p-5">
+<div class="flex flex-col items-center justify-center bg-stone-100/60 w-fit h-fit rounded-md border border-stone-200 p-5">
     <h1 class="font-bold text-3xl p-5 text-shadow-sm">
         <span class="text-primary">Intern</span> 
         <span class="text-secondary">Timetracker </span>
@@ -31,7 +31,7 @@
 </svg>
         <input class="login-textbox" type="password" name="password" id="password" placeholder="enter password" required />
         </div>
-        <div class="flex text-center">
+        <div class="flex text-center" id="error-notif">
             <?php if (isset($errors['login'])): ?>
                 <span class="error-notif"><?= htmlspecialchars($errors['login']) ?></span>
             <?php endif; ?>
@@ -45,6 +45,15 @@
         </div>
     </form>
 </div>
+
+<script>
+    let x = document.getElementById('error-notif');
+    if (x.innerText !== "") {
+        setTimeout(() => {
+            x.innerText = "";
+        }, 5000)
+    }
+</script>
 
 </body>
 </html>
