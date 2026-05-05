@@ -2,6 +2,7 @@
 
 $config = require __DIR__ . '/../config/config.php';
 
+$pdo = null;
 $db = $config['database'];
 
 $errors = 0; # if the value of this doesnt change means all operations succeeded
@@ -13,7 +14,7 @@ try {
     $mysql_connected = "<p class='success'>Connection to database engine succeeded!</p>";
 } catch (PDOException $e) {
     $mysql_connected = "<p class='error'>Connection to database failed</p>";
-    $error += 1;
+    $errors += 1;
 }
 
 // dropping the database @first run
@@ -49,6 +50,14 @@ try {
 $tables = [
     "users" => "CREATE TABLE IF NOT EXISTS users (
             users_id INT AUTO_INCREMENT PRIMARY KEY,
+            email VARCHAR(150) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            role ENUM('admin','intern') NOT NULL,
+            last_login DATETIME DEFAULT NULL            
+            )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;",
+
+    "account_details" => "CREATE TABLE IF NOT EXISTS account_details (
+            account_details_id INT AUTO_INCREMENT PRIMARY KEY,
             first_name VARCHAR(50) NOT NULL,
             middle_name VARCHAR(50),
             last_name VARCHAR(50) NOT NULL,
@@ -60,21 +69,11 @@ $tables = [
             status ENUM('active','inactive','suspended','deleted') DEFAULT 'active',
             date_status_updated DATETIME DEFAULT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-            )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;",
-
-    "users_login" => "CREATE TABLE IF NOT EXISTS users_login (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            users_id INT NOT NULL,
-            email VARCHAR(150) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL,
-            role ENUM('admin','intern') NOT NULL,
-            last_login DATETIME DEFAULT NULL,
-            CONSTRAINT fk_user_login
-                FOREIGN KEY (users_id)
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            CONSTRAINT fk_account
+                FOREIGN KEY (account_details_id)
                 REFERENCES users(users_id)
                 ON DELETE CASCADE
-                ON UPDATE CASCADE
             )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;",
 
     "timesheet" => "CREATE TABLE IF NOT EXISTS timesheet (
@@ -140,7 +139,7 @@ try {
     $new_user_id = $pdo->lastInsertId();
 
     // insert the same user to login table
-    $sqlcommand_role = "INSERT INTO users_login(`users_id`,`email`,`password`,`role`) VALUES(:users_id, :email, :password, :role)";
+    $sqlcommand_role = "INSERT INTO users(`users_id`,`email`,`password`,`role`) VALUES(:users_id, :email, :password, :role)";
     $statement_role = $pdo->prepare($sqlcommand_role);
     $statement_role->execute([
         ':users_id' => $new_user_id,
@@ -154,7 +153,7 @@ try {
 } catch (PDOException $e) {
     $pdo->rollBack();
     $admin_created = "<p class='error'>Admin account creation failed!.</p>";
-    $error += 1;
+    $errors += 1;
 }
 
 // populate the sites table
@@ -179,7 +178,7 @@ $sample_intern = require __DIR__ . '/../includes/sample_interns.php';
 try {
     $pdo->beginTransaction();
 
-    $sqlcommand = "INSERT INTO users(`first_name`,`middle_name`,`last_name`,`school`,`total_required_hours`,`site_location`,`user_address`,`mobile_no`,`status`) VALUES(:first, :middle, :last, :school, :total_hrs_required, :site_location, :user_address, :mobile_no, :status);";
+    $sqlcommand = "INSERT INTO account_details(`first_name`,`middle_name`,`last_name`,`school`,`total_required_hours`,`site_location`,`user_address`,`mobile_no`,`status`) VALUES(:first, :middle, :last, :school, :total_hrs_required, :site_location, :user_address, :mobile_no, :status);";
 
     $statement = $pdo->prepare($sqlcommand);
 
@@ -218,7 +217,7 @@ try {
         $pdo->rollBack();
     }
     $intern_created = "<p class='error'>Intern account creation failed!.</p>" . $e->getMessage();
-    $error += 1;
+    $errors += 1;
 }
 
 $sqlcommand = "SELECT COUNT(users_id) AS total_no_of_records FROM users";

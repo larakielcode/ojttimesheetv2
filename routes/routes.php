@@ -20,7 +20,7 @@ $router->get('/sites/create', 'app/Controllers/sites/index.php')->only('auth');
 $router->post('/sites/create', 'app/Controllers/sites/create.php');
 
 # this is for migrations
-$router->get('/migrations', 'migrations/migrations.php');
+$router->get('/migrations', 'migrations/new_migrations.php');
 
 
 # this is for test page
