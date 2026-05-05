@@ -23,11 +23,19 @@ try {
 
     # Define tables
     $tables = [
+        # Locations table
         "site_locations" => "CREATE TABLE site_locations (
                             location_id INT PRIMARY KEY AUTO_INCREMENT,
                             location_name VARCHAR(150) NOT NULL,
                             address TEXT,
                             is_active BOOLEAN DEFAULT TRUE,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                            ) ENGINE=InnoDB",
+
+        # Locations tables
+        "list_of_schools" => "CREATE TABLE schools (
+                            school_id INT PRIMARY KEY AUTO_INCREMENT,
+                            school_name VARCHAR(150) NOT NULL,
                             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                             ) ENGINE=InnoDB",
         
@@ -67,7 +75,7 @@ try {
                             last_name VARCHAR(50) NOT NULL,
                             mobile_no VARCHAR(30),
                             user_address TEXT,
-                            school VARCHAR(100),
+                            school_id INT,
                             site_location_id INT,
                             total_required_hours INT DEFAULT 0,
                             status ENUM('active','inactive','suspended','deleted') DEFAULT 'active',
@@ -81,7 +89,11 @@ try {
                             CONSTRAINT fk_intern_account
                                 FOREIGN KEY (intern_id)
                                 REFERENCES accounts(accounts_id)
-                                ON DELETE CASCADE
+                                ON DELETE CASCADE,
+                            CONSTRAINT fk_intern_school
+                                FOREIGN KEY (school_id)
+                                REFERENCES schools(school_id)
+                                ON DELETE SET NULL
                             ) ENGINE=InnoDB",
         
         # Intern Timesheet : Depends on intern details
@@ -126,6 +138,99 @@ try {
         } catch (\PDOException $e) {
             $messages[] = "Failed to insert location data.";
         }
+    }
+
+    # INSERT SCHOOL
+
+    $list_of_school = require __DIR__ . '/../includes/list_of_schools.php';
+
+    foreach($list_of_school as $data) {
+        try {
+            $statement = $pdo->prepare("INSERT INTO schools (school_name) VALUES (?)");
+            $statement->execute([
+                $data
+            ]);
+            $messages[] = "School `{$data}` inserted successfully.";
+        } catch (\PDOException $e) {
+            $messages[] = "Failed to insert school data.";
+        }
+    }
+
+    # INSERT super admin credentials
+    try {
+        $pdo->beginTransaction();
+
+        $statement = $pdo->prepare("INSERT INTO accounts (email, password, role) VALUES (?,?,?)");
+        $statement->execute([
+            'itpadmin@omegahms.com',
+            password_hash('admin123', PASSWORD_DEFAULT),
+            'admin'
+        ]);
+
+        $new_account_id = $pdo->lastInsertId();
+        
+        $statement = $pdo->prepare("INSERT INTO admin_details 
+                                (admin_id, first_name, middle_name, last_name, mobile_no, site_location_id) 
+                                VALUES (?, ?, ?, ?, ?, ?)
+                                ");
+        $statement->execute([$new_account_id, 'IT', '', 'Administrator', '+639398878158', '1']);
+
+        $pdo->commit();
+        $messages[] = "Admin account created and added successfully.";
+
+    } catch (\PDOException $e) {
+
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+
+        $messages[] = "Admin account creation failed.";
+    }
+
+    # INSERT interns
+    try {
+        $list_of_interns = require __DIR__ . '/../includes/sample_interns.php';
+        $pdo->beginTransaction();
+
+        foreach ($list_of_interns as $interns => $data) {
+            $statement = $pdo->prepare("INSERT INTO accounts (email, password, role) VALUES (?,?,?)");
+            $statement->execute([
+                $data['email'],
+                password_hash($data['password'], PASSWORD_DEFAULT),
+                $data['role']
+            ]);
+
+            $new_account_id = $pdo->lastInsertId();
+            $sample_school_id = mt_rand(1,20);
+
+            $statement = $pdo->prepare("INSERT INTO intern_details 
+                                    (intern_id, first_name, middle_name, last_name, mobile_no, user_address, school_id, site_location_id, total_required_hours, status) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                    ");
+            $statement->execute([
+                $new_account_id, 
+                $data['firstname'],
+                $data['middle_name'],
+                $data['lastname'],
+                '+'.$data['mobile_no'],
+                $data['user_address'],
+                $sample_school_id,
+                $data['site_location'],
+                $data['total_hrs_required'],
+                $data['status'],
+                ]);
+        }
+
+        $pdo->commit();
+        $messages[] = "Intern account created and added successfully.";
+
+    } catch (\PDOException $e) {
+
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+
+        $messages[] = "Intern account creation failed.";
     }
 
 } catch (\PDOException $e) {
