@@ -19,9 +19,10 @@ function basePath(string $path): string
     return BASE_PATH . $path;
 }
 
-function views(string $path, array $attributes = []): mixed
+function views(string $path, array $attributes = []): void
 {
-    return basePath("views/{$path}");
+    extract($attributes);
+    require basePath("views/{$path}");
 }
 
 function dd(mixed $value): void
