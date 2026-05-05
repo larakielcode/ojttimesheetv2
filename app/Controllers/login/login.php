@@ -26,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
         try {
 
-            $user = Database::query("SELECT users_id, password, role FROM users_login WHERE email = :email", ['email' => $email])->fetch();
+            $user = Database::query("SELECT accounts_id, password, role FROM accounts WHERE email = :email", ['email' => $email])->fetch();
 
             if ($user && password_verify($password, $user['password'])) {
-                $loggedUser = Login::executeLogin($user['users_id'], $email, $user['role']);
+                $loggedUser = Login::executeLogin($user['accounts_id'], $email, $user['role']);
 
                 Redirect::toDashboard();
             } else {

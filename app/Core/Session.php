@@ -27,13 +27,13 @@ final class Session
         }
     }
 
-    public static function authenticate(int $users_id, string $email, string $role, int $time): void
+    public static function authenticate(int $accounts_id, string $email, string $role, int $time): void
     {
         self::checkSessionStatus();
         session_regenerate_id(true);
 
         self::set('logged_on_user', [
-            'users_id' => $users_id,
+            'users_id' => $accounts_id,
             'email' => $email,
             'role' => $role,
             'last_login_time' => $time
