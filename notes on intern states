@@ -1,0 +1,15 @@
+active	
+>> Currently working.	
+>> Can log hours; appears in current headcounts.
+
+inactive	
+>> Valid member, but "paused."	
+>> Cannot log hours; records are preserved for the future.
+
+suspended	
+>> Disciplinary or security hold.	
+>> Access is revoked immediately; pending investigation.
+
+deleted	
+>> Relationship terminated.	
+>> Record is hidden from UI (but kept in DB for audit trails).
