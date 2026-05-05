@@ -6,7 +6,7 @@
     <title>Login Page - Intern Timetracker Portal</title>
     <link rel="stylesheet" href="../assets/css/app.css">
 </head>
-<body class="font-poppins h-dvh flex flex-col justify-center items-center bg">
+<body class="font-poppins h-dvh flex flex-col justify-center items-center bground">
 
 <img class="w-80 mb-8" src="../assets/images/omegalogo.png" alt="">
 <div class="flex flex-col items-center justify-center bg-stone-100/60 w-fit h-fit rounded-md border border-stone-200 p-5">
