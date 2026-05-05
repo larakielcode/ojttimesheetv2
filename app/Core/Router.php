@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Core;
@@ -33,17 +34,17 @@ class Router
 
     public function route(string $method, string $uri): mixed
     {
-        foreach ($this->routes as $route) {
+        foreach ($this->routes as $route) {              
+
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
                 if ($route['middleware'] ?? false) {
 
                     Middleware::resolve($route['middleware']);
                 }
                 return require basePath($route['controller']);
-            } else {
-                dd('Aborted');
             }
         }
+        Errors::abort("Page not found!");
         return false; # get back to this after creating errors page
     }
 
