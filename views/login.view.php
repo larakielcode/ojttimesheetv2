@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page - Intern Timetracker Portal</title>
+    <title>Login Page | Intern Timetracker Portal</title>
     <link rel="stylesheet" href="../assets/css/app.css">
 </head>
 <body class="font-poppins h-dvh flex flex-col justify-center items-center bground">
