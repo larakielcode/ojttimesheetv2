@@ -7,12 +7,10 @@ function filterCards() {
   let visibleCount = 0;
 
   rows.forEach(row => {
-    const id = (row.dataset.id || '').toLowerCase();
-    const first = (row.dataset.firstname || '').toLowerCase();
-    const last = (row.dataset.lastname || '').toLowerCase();
-    const full = first + ' ' + last;
+    const id   = (row.dataset.id   || '').toLowerCase();
+    const name = (row.dataset.name || '').toLowerCase();
 
-    const visible = !query || id.includes(query) || full.includes(query);
+    const visible = !query || id.includes(query) || name.includes(query);
     row.style.display = visible ? '' : 'none';
     if (visible) visibleCount++;
   });
