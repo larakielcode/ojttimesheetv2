@@ -35,7 +35,7 @@
 
     .profile-title {
         @apply font-bold text-base tracking-tight text-secondary capitalize;
-        @apply mt-4;
+        @apply mt-4 mx-8;
     }
 
     /* Dashboard link items */

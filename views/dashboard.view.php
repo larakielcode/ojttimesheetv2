@@ -11,11 +11,10 @@
     <!-- SIDE NAVIGATION -->
     <div class="basis-70 bg-stone-100/60 border-r border-r-stone-200 flex flex-col items-center">
 
-        <div class="flex flex-col justify-center items-center bg-primary/10 px-5 py-5 rounded-md mt-10">
+        <div class="flex flex-col justify-center items-center bg-primary/10 py-5 rounded-md mt-10">
             <div class="w-30 h-30 aspect-square rounded-full overflow-hidden">
                 <img class="w-full h-full object-cover" src="../assets/images/profile.webp" alt="">
             </div>
-            <!-- <p class="profile-title"><?= $_SESSION['logged_on_user']['email']?></p> -->
             <div><p class="profile-title"><?= $logged_user_name ?? '' ?></p></div>
             <div><p><a class="profile-subtitle-link" href="#">View Profile</a></p></div>
         </div>

@@ -1,10 +1,6 @@
 <?php
 
 use App\Core\User;
-use App\Core\Database;
-
-$config = require basePath('config/config.php');
-Database::getConnection($config);
 
 $userData = $_SESSION['logged_on_user'];
 
