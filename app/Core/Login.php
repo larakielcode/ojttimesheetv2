@@ -14,10 +14,8 @@ class Login
         private int $accounts_id,
         private string $email,
         private string $role
-    ) {
-    }
+    ) {}
 
-    //Session::authenticate($this->users_id, $this->email, $this->role);
     public static function executeLogin(int $accounts_id, string $email, string $role): self
     {
         // instantiate

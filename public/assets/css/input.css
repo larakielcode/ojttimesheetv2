@@ -34,7 +34,7 @@
     }
 
     .profile-title {
-        @apply font-bold text-base tracking-tight text-secondary;
+        @apply font-bold text-base tracking-tight text-secondary capitalize;
         @apply mt-4;
     }
 
